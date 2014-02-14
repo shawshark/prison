@@ -35,6 +35,17 @@ public class BlockCommand implements CommandExecutor {
 				if(args.length == 0) {
 					p.sendMessage(ChatColor.GOLD + "/block (block name)");
 				} else {
+					
+					if(args[0].equalsIgnoreCase("list"))
+					{
+						p.sendMessage(ChatColor.GREEN + "Current blocks...");
+						for (Blocks bl : locations ) {
+							p.sendMessage(ChatColor.GREEN + "- " + ChatColor.GOLD + bl.id);
+						}
+						return true;
+					}
+					
+					
 					for ( Blocks b : locations)
 					{
 						String block = args[0];
@@ -43,8 +54,7 @@ public class BlockCommand implements CommandExecutor {
 							Location l = b.loc;
 							p.teleport(l);
 							p.sendMessage(ChatColor.GOLD + "Teleported you to block " + block);
-						} else {
-							p.sendMessage(ChatColor.GOLD + "Block " + block + " doesn't exist...");
+							return true;
 						}
 					}
 				}
@@ -57,12 +67,21 @@ public class BlockCommand implements CommandExecutor {
 					} else {
 						String blockName = args[0];
 						Location loc = p.getLocation();
-						if(!locations.contains(new Blocks(loc, blockName))) {
-							locations.add(new Blocks(loc, blockName));
-							p.sendMessage(ChatColor.GOLD + "You have created block " + blockName);
-						} else {
-							p.sendMessage(ChatColor.GOLD + "Block already created!");
+						
+						for ( Blocks b : locations ) 
+						{
+							if(blockName.equalsIgnoreCase(b.id))
+							{
+								p.sendMessage(ChatColor.GOLD + "Block " + blockName + " has already been created!");
+								return true;
+								
+							}
 						}
+						
+						
+						locations.add(new Blocks(loc, blockName));
+						p.sendMessage(ChatColor.GOLD + "You have created block " + blockName);
+						
 					}
 				} else {
 					p.sendMessage(ChatColor.GOLD + "You don't have enough permissions!");
@@ -102,6 +121,10 @@ public class BlockCommand implements CommandExecutor {
 			Location loc = new Location(w, x, y, z);
 			
 			locations.add(new Blocks(loc, id));
+			
+			
+			
+			System.out.println(world + " " + x + " " + y + " " + z + " " + id);
 		}
 		
 	}
@@ -121,7 +144,7 @@ public class BlockCommand implements CommandExecutor {
 			String id = b.id;
 			
 			
-			String s = worldName + "," +x + "," + y + "," + z + "," + id;
+			String s = worldName + "," + x + "," + y + "," + z + "," + id;
 			
 			blockz.add(s);
 		}
