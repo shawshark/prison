@@ -1,4 +1,4 @@
-package me.shawshark.test;
+package me.shawshark.prison;
 
 import java.util.ArrayList;
 import java.util.List;
