@@ -3,7 +3,6 @@ package me.shawshark.prison;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class loadgroups {
-
 	
 	public Main m;
 	int count;
@@ -18,6 +17,9 @@ public class loadgroups {
 		/* set the count to 0 */
 		count = 0;
 		
+		/* Clear the arraylist */
+		m.groups.clear();
+		
 		String groupname;
 		int price;
 		String required;
@@ -26,7 +28,6 @@ public class loadgroups {
 		{
 			/* split the string. */
 			String[] i = s.split(",");
-			
 			
 			groupname = i[0];
 			price = Integer.parseInt(i[1]);
@@ -41,8 +42,6 @@ public class loadgroups {
 		
 		/* out put how many groups were loaded in the console */
 		System.out.println("<Rankup> Loaded " + count + " groups!");
-		
-		
 		
 	}
 }
