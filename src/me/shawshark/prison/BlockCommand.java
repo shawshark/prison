@@ -64,6 +64,8 @@ public class BlockCommand implements CommandExecutor {
 							p.sendMessage(ChatColor.GOLD + "Block already created!");
 						}
 					}
+				} else {
+					p.sendMessage(ChatColor.GOLD + "You don't have enough permissions!");
 				}
 			}
 		}
