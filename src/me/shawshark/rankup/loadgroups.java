@@ -15,6 +15,7 @@ public class loadgroups {
 	public void load() {
 		FileConfiguration c = m.getConfig();
 		
+		/* set the count to 0 */
 		count = 0;
 		
 		String groupname;
@@ -23,6 +24,7 @@ public class loadgroups {
 		
 		for ( String s : c.getStringList("groups"))
 		{
+			/* split the string. */
 			String[] i = s.split(",");
 			
 			
@@ -30,11 +32,14 @@ public class loadgroups {
 			price = Integer.parseInt(i[1]);
 			required = i[2];
 			
+			/* add +1 each time a group is added from the config */
 			count++;
 			
+			/* load the groups into the arraylist */
 			m.groups.add(new groups(groupname, price, required));
 		}
 		
+		/* out put how many groups were loaded in the console */
 		System.out.println("<Rankup> Loaded " + count + " groups!");
 		
 		
