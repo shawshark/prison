@@ -48,6 +48,7 @@ public class RankcreateCommand implements CommandExecutor {
 					if(i)
 					{
 						m.groups.add(new groups(groupName, price, required));
+						i = false;
 					}
 					
 					
