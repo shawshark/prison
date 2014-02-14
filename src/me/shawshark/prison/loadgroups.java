@@ -1,13 +1,16 @@
 package me.shawshark.prison;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.configuration.file.FileConfiguration;
 
-public class loadgroups {
+public class loadsavegroups {
 	
-	public Main m;
+	public main m;
 	int count;
 	
-	public loadgroups(Main m) {
+	public loadsavegroups(main m) {
 		this.m = m;
 	}
 	
@@ -42,6 +45,38 @@ public class loadgroups {
 		
 		/* out put how many groups were loaded in the console */
 		System.out.println("<Rankup> Loaded " + count + " groups!");
+		
+	}
+	
+	public void save() {
+		FileConfiguration c = m.getConfig();
+		
+		/* set the count to 0 */
+		count = 0;
+		
+		List<String> groupz = new ArrayList<String>();
+		
+		for ( groups g : m.groups ) 
+		{
+			
+			String groupName = g.groupname;
+			int price = g.price;
+			String required = g.required;
+			
+			String s = groupName + "," + price + "," + required;
+			
+			groupz.add(s);
+			
+			count++;
+			
+		}
+		
+		c.set("groups", groupz);
+		m.saveConfig();
+		
+		System.out.println("<Rankup> Saved " + count + " groups!");
+		
+		m.groups.clear();
 		
 	}
 }
