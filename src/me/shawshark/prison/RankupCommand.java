@@ -60,7 +60,7 @@ public class RankupCommand implements CommandExecutor {
 						
 						if("") {	
 							
-
+							// use vault api to check if player has money.
 							//if player has money
 							
 
@@ -75,7 +75,7 @@ public class RankupCommand implements CommandExecutor {
 							
 							
 					} else {
-						p.sendMessage(ChatColor.GOLD + "You seem to already be in group + " + groupName);
+						p.sendMessage(ChatColor.GOLD + "You seem to already be in group " + groupName);
 					}
 						
 						
