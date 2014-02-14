@@ -1,4 +1,4 @@
-package me.shawshark.test;
+package me.shawshark.prison;
 
 public class groups {
 	public String groupname;
